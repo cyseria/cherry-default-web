@@ -1,2 +1,3 @@
-# cherry-scaffold-web
-cherry scaffold web
+# Cherry Scaffold Web
+
+一个用 `create-react-app` 启起来的脚手架市场 web 版本
