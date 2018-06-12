@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { Button } from 'antd';
+import { Layout } from 'antd';
 
-import './App.css';
+import Main from './components/Main';
+const { Header, Footer} = Layout;
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Button type="primary">Button</Button>
+        <Layout>
+          <Header className="header">
+            Cherry Scaffold Market For BE-FE
+          </Header>
+          <Main />
+          <Footer>Footer</Footer>
+        </Layout>
       </div>
     );
   }

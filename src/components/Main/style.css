@@ -1,0 +1,23 @@
+.main-wrap {
+    display: flex;
+    justify-content: center;
+}
+.main-content {
+    max-width: 1204px;
+    width: 1204px;
+    display: flex;
+}
+.sidebar {
+    flex: 0 0 320px;
+    max-width: 320px;
+    min-width: 320px;
+    width: 320px;
+    background-color: tomato;
+}
+.list {
+    flex: auto;
+    background-color: yellow;
+}
+.hot-tags {
+    border: 1px solid #ccc;
+}
