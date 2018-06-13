@@ -6,7 +6,8 @@
     "antd": "^3.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "cz-customizable": "^5.2.0",
+    "react-app-rewire-less": "^2.1.1",
     "react-app-rewired": "^1.5.2"
   },
   "config": {
