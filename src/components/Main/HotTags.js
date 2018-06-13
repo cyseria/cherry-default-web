@@ -3,19 +3,17 @@ import { Tag } from 'antd';
 const CheckableTag = Tag.CheckableTag;
 
 export default class HotTags extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            selectedTags: []
-        }
+    state = {
+        selectedTags: []
     }
+
     handleChange(tag, checked) {
         const { selectedTags } = this.state;
+        const { setCheckedTag } = this.props;
         const nextSelectedTags = checked ?
             [...selectedTags, tag] :
             selectedTags.filter(t => t !== tag);
-
-        console.log('You are interested in: ', nextSelectedTags);
+        setCheckedTag(nextSelectedTags);
         this.setState({ selectedTags: nextSelectedTags });
     }
     render() {
