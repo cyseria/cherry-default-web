@@ -44,12 +44,15 @@
         flex-wrap: wrap; // justify-content: center;
     }
     .list-item {
-        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         width: 280px;
         padding: 10px;
         margin: 10px;
         box-shadow: 0 1px 4px rgba(0, 0, 0, .09);
         overflow: hidden;
+        box-sizing: border-box;
     }
     .list-item__title {
         text-align: center;

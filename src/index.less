@@ -1,29 +1,43 @@
-* {
-  margin: 0;
-  padding: 0;
+@font-face {
+    font-family: localfont;
+    src: url("./access/iconfont/iconfont.eot");
+    src: url("./access/iconfont/iconfont.woff") format("woff"), url("./access/iconfont/iconfont.ttf") format("truetype"), url("./access/iconfont/iconfont.svg#iconfont") format("svg")
 }
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.anticon:before {
+    display: block;
+    font-family: "localfont" !important;
 }
 
-ul, li {
-  list-style: none;
+* {
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
 .header {
-  height: 100px;
-  font-size: 30px;
-  color: #fff;
-  padding: 16px 0;
-  background: #974DF3;
-  height: auto;
-  text-align: center;
+    height: 100px;
+    font-size: 30px;
+    color: #fff;
+    padding: 16px 0;
+    background: #974DF3;
+    height: auto;
+    text-align: center;
 }
+
 .ant-layout {
-  background-color: #fff;
+    background-color: #fff;
 }
 
 .main-wrap {
-  height: calc(~"100vh - 100px");
+    height: calc(~"100vh - 100px");
 }
