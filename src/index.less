@@ -40,4 +40,34 @@ li {
 
 .main-wrap {
     height: calc(~"100vh - 100px");
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    width: 100%;
+    display: flex;
+}
+
+
+.sidebar {
+    flex: 0 0 320px;
+    padding: 10px;
+    max-width: 320px;
+    min-width: 320px;
+    width: 320px;
+    border-right: 1px solid #efefef;
+    .sidebar-items {
+        margin-top: 10px;
+    }
+    .side-content {
+        padding: 0 10px;
+    }
+    .hot-tags {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    @media only screen and (max-width: 1024px) {
+        display: none;
+    }
 }

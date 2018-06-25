@@ -5,6 +5,16 @@
 
 ```
 npm install
+
 npm run start
+
 npm run build
+```
+
+open http://localhost:3000/
+
+/src/server/config.js 的格式为
+
+```javascript
+export default "xxx"
 ```
