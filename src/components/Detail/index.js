@@ -3,26 +3,67 @@
  * @author Cyseria <xcyseria@gmail.com>
  * @created time: 2018-06-25 22:45:40
  * @last modified by: Cyseria
- * @last modified time: 2018-06-25 23:27:30
+ * @last modified time: 2018-07-08 14:15:36
  */
 
 import './style.less';
 import React, { Component } from 'react';
 import { Button, Card } from 'antd';
+import request from 'superagent';
+
+import API from '../../server';
+import { getUrlParam } from '../../utils/urls';
 
 export default class Detail extends Component {
+    state = {
+        name: '',
+        description: '',
+        owner: '',
+        tags: [],
+        url: ''
+    }
+
+    async componentWillMount() {
+        const detailName = getUrlParam('name');
+        const {body} = await request
+            .get(API.getList)
+            .query({ name: detailName });
+        const {name, description, owner, tags, url} = body;
+        this.setState({
+            name,
+            description,
+            owner,
+            url,
+            tags: tags.split(",")
+        });
+    }
+
     render() {
+        let tags = null;
+        if (this.state.tags.length > 0) {
+            tags = (
+                <div className="sidebar-items">
+                    <h3>标签</h3>
+                    <div className="side-content">
+                        {this.state.tags.map(item => (
+                            <div key={item} className="ant-tag ant-tag-checkable hot-tags">{item}</div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
         return (
             <div className="main-wrap detail-wrap">
                 <div className="main-content">
                     <aside className="sidebar">
                         <div className="sidebar-items">
-                            <h3>ant-design-pro</h3>
+                            <h3>{this.state.name}</h3>
                             <div className="side-content">
-                                <p>👻🎃 An out-of-box UI solution for enterprise applications</p>
+                                <p>{this.state.description}</p>
                                 <div>
-                                    <Button icon="home" size="small" target="_blank">仓库</Button>
-                                    <Button icon="download" size="small" href='/archive/master.zip'>下载</Button>
+                                    <Button className="side-button-sm" icon="home" size="small" target="_blank" href={this.state.url}>仓库</Button>
+                                    <Button className="side-button-sm" icon="download" size="small" href={this.state.url + '/archive/master.zip'} >下载</Button>
                                 </div>
                             </div>
                         </div>
@@ -40,14 +81,9 @@ export default class Detail extends Component {
                                 </ul>
                             </div>
                         </div>
-
-                        <div className="sidebar-items">
-                            <h3>标签</h3>
-                            <div className="side-content">
-                                <div className="ant-tag ant-tag-checkable hot-tags">vue</div>
-                            </div>
-                        </div>
-
+                        
+                        {tags}
+                        
                         <div className="sidebar-items">
                             <h3>基本信息</h3>
                             <div className="side-content">
@@ -58,10 +94,18 @@ export default class Detail extends Component {
 
                     </aside>
                     <main className="introduce">
-                        <Card title="Read Me">
+                        <Card title="README">
                             <p>Card content</p>
                             <p>Card content</p>
                             <p>Card content</p>
+                            {/* {scaffold.readme
+                                ? (
+                                    <div
+                                        className={styles.markdown}
+                                        dangerouslySetInnerHTML={{ __html: scaffold.readme }}
+                                    />
+                                ) : <Spin />
+                            } */}
                         </Card>
                     </main>
                 </div>

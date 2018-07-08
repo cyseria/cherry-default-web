@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import {Button} from 'antd';
+import {withRouter} from "react-router-dom";
 
-export default class Gallery extends Component {
+class Gallery extends Component {
+    showDetailPage = (name) => {
+        this.props.history.push(
+            '/detail?name=' + name
+        );
+    }
     render() {
         const { galleryList } = this.props;
-        // /picidaejs/picidaejs/archive/master.zip
         return (
             <div className="list">
                 <h3>共 {galleryList.length} 个脚手架</h3>
@@ -15,7 +20,7 @@ export default class Gallery extends Component {
                             <div className="list-item__desc">{item.description}</div>
                             <div>tags: {item.tags.join(', ')}</div>
                             <div className="list-item__operate">
-                                <Button icon="home" target="_blank" href={item.url}>主页</Button>
+                                <Button icon="home" target="_blank" onClick={this.showDetailPage.bind(this, item.name)}>主页</Button>
                                 <Button icon="download" href={item.url + '/archive/master.zip'}>下载</Button>
                             </div>
                         </li>
@@ -26,3 +31,5 @@ export default class Gallery extends Component {
         );
     }
 }
+
+export default withRouter(Gallery);
