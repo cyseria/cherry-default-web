@@ -1,12 +1,18 @@
 /* config-overrides.js */
 
-const { injectBabelPlugin } = require('react-app-rewired');
-const rewireLess = require('react-app-rewire-less');
+const { injectBabelPlugin } = require("react-app-rewired");
+const rewireLess = require("react-app-rewire-less");
 
 module.exports = function override(config, env) {
-  config = injectBabelPlugin(['import', { libraryName: 'antd', style: true }], config);
+  config = injectBabelPlugin(
+    ["import", { libraryName: "antd", style: true }],
+    config
+  );
   config = rewireLess.withLoaderOptions({
-    modifyVars: { "@primary-color": "#017DFE" },
+    javascriptEnabled: true,
+    modifyVars: {
+      "@primary-color": "#017DFE"
+    }
   })(config, env);
-    return config;
-  };
+  return config;
+};
