@@ -28,10 +28,10 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     response => {
         const data = response.data;
-        if (data.code === 401) {
-            // 未登录
-            location.href = data.data.redirectUrl;
-        }
+        // if (!!data.code === 401) {
+        //     // 未登录
+        //     window.location.href = data.data.redirectUrl;
+        // }
         return response.data;
     },
     error => { // 请求出错

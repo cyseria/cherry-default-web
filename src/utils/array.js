@@ -9,7 +9,7 @@ export function isArrayContained(a, b) {
         return false;
     }
     if (b.length === 0) {
-        return false;
+        return a;
     }
     if (a.length < b.length) {
         return false;

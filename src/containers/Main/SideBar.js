@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HotTags from './HotTags';
+import TagList from '../../components/TagList/index';
 
 export default class SideBar extends Component {
     state = {
@@ -9,14 +9,18 @@ export default class SideBar extends Component {
         ]
     };
 
+    handleTagChecked = tags => {
+        this.props.handleTagChecked(tags);
+    }
+
     render() {
-        const {tagList, setCheckedTag} = this.props;
+        const {tagList} = this.props;
         const {hotCli} = this.state;
         return (
             <div className="sidebar">
                 <div className="sidebar-items">
                     <h3>全部标签</h3>
-                    <HotTags tagList={tagList} setCheckedTag={setCheckedTag} />
+                    <TagList tags={tagList} onTagChecked={this.handleTagChecked} />
                 </div>
                 <div className="sidebar-items">
                     <h3>推荐 cli</h3>
