@@ -1,18 +1,15 @@
 /**
  * @file 脚手架详情
  * @author Cyseria <xcyseria@gmail.com>
- * @created time: 2018-06-25 22:45:40
- * @last modified by: Cyseria
- * @last modified time: 2018-07-08 14:15:36
  */
 
 import './style.less';
-import React, { Component } from 'react';
-import { Button, Card } from 'antd';
+import React, {Component} from 'react';
+import {Button, Card} from 'antd';
 import request from 'superagent';
 
 import API from '../../server';
-import { getUrlParam } from '../../utils/urls';
+import {getUrlParam} from '../../utils/urls';
 
 export default class Detail extends Component {
     state = {
@@ -21,20 +18,18 @@ export default class Detail extends Component {
         owner: '',
         tags: [],
         url: ''
-    }
+    };
 
     async componentWillMount() {
         const detailName = getUrlParam('name');
-        const {body} = await request
-            .get(API.getList)
-            .query({ name: detailName });
+        const {body} = await request.get(API.getList).query({name: detailName});
         const {name, description, owner, tags, url} = body;
         this.setState({
             name,
             description,
             owner,
             url,
-            tags: tags.split(",")
+            tags: tags.split(',')
         });
     }
 
@@ -46,7 +41,9 @@ export default class Detail extends Component {
                     <h3>标签</h3>
                     <div className="side-content">
                         {this.state.tags.map(item => (
-                            <div key={item} className="ant-tag ant-tag-checkable hot-tags">{item}</div>
+                            <div key={item} className="ant-tag ant-tag-checkable hot-tags">
+                                {item}
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -62,8 +59,23 @@ export default class Detail extends Component {
                             <div className="side-content">
                                 <p>{this.state.description}</p>
                                 <div>
-                                    <Button className="side-button-sm" icon="home" size="small" target="_blank" href={this.state.url}>仓库</Button>
-                                    <Button className="side-button-sm" icon="download" size="small" href={this.state.url + '/archive/master.zip'} >下载</Button>
+                                    <Button
+                                        className="side-button-sm"
+                                        icon="home"
+                                        size="small"
+                                        target="_blank"
+                                        href={this.state.url}
+                                    >
+                                        仓库
+                                    </Button>
+                                    <Button
+                                        className="side-button-sm"
+                                        icon="download"
+                                        size="small"
+                                        href={this.state.url + '/archive/master.zip'}
+                                    >
+                                        下载
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -81,9 +93,9 @@ export default class Detail extends Component {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         {tags}
-                        
+
                         <div className="sidebar-items">
                             <h3>基本信息</h3>
                             <div className="side-content">
@@ -91,7 +103,6 @@ export default class Detail extends Component {
                                 <p>更新于: a month ago</p>
                             </div>
                         </div>
-
                     </aside>
                     <main className="introduce">
                         <Card title="README">

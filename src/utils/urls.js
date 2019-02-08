@@ -1,4 +1,10 @@
 /**
+ * @file
+ * @author Cyseria
+ */
+
+
+/**
  * 获取url参数值
  * @param {string} name 必填，需要获取的参数名
  * @param {string} url 需要获取参数的url，如为空则使用 location.search

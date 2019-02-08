@@ -3,6 +3,7 @@
     src: url("./access/iconfont/iconfont.eot");
     src: url("./access/iconfont/iconfont.woff") format("woff"), url("./access/iconfont/iconfont.ttf") format("truetype"), url("./access/iconfont/iconfont.svg#iconfont") format("svg")
 }
+
 .anticon:before {
     display: block;
     font-family: "localfont" !important;
@@ -24,8 +25,9 @@ li {
     list-style: none;
 }
 
+@header-height: 100px;
 .header {
-    height: 100px;
+    height: @header-height;
     font-size: 30px;
     color: #fff;
     padding: 16px 0;
@@ -35,11 +37,12 @@ li {
 }
 
 .ant-layout {
-    background-color: #fff;
+    background-color: #fafafa;
+    min-height: 100vh;
 }
 
 .main-wrap {
-    height: calc(~"100vh - 100px");
+    min-height: calc(~"100vh - @{header-height}");
     display: flex;
     justify-content: center;
 }
@@ -48,7 +51,6 @@ li {
     width: 100%;
     display: flex;
 }
-
 
 .sidebar {
     flex: 0 0 320px;

@@ -1,47 +1,47 @@
 /**
- * @file 
- * @author Cyseria <xcyseria@gmail.com> 
- * @created time: 2018-06-10 08:32:00 
- * @last modified by: Cyseria
- * @last modified time: 2018-06-13 13:49:49
+ * @file
+ * @author Cyseria <xcyseria@gmail.com>
+ * @created time: 2018-06-10 08:32:00
+ * @last modified by: 陈蔓青
+ * @last modified time: 2019-02-06 21:04:03
  */
 
 import './style.less';
 import request from 'superagent';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Gallery from './Gallery';
 import SideBar from './SideBar';
 
 import API from '../../server';
-import { isArrayContained } from '../../utils/array'
+import {isArrayContained} from '../../utils/array';
 
 export default class Main extends Component {
     state = {
         galleryList: [],
         tagsList: [],
-        checkedList: [],
-    }
+        checkedList: []
+    };
     async componentWillMount() {
-        const { body } = await request.get(API.getList); // {xxx: {name: xx, ...}, ...}
+        const {body} = await request.get(API.getList); // {xxx: {name: xx, ...}, ...}
         const gallery = Object.values(body);
 
         // 提取 tags, 并将 string 转为 array
         const tagsList = this.state.tagsList;
         const galleryList = gallery.map(item => {
-            const tags = item.tags.split(",");
+            const tags = item.tags.split(',');
             const itemTags = [];
             tags.forEach(it => {
-                const tag = it.replace(/^\s+|\s+$/g, "");
+                const tag = it.replace(/^\s+|\s+$/g, '');
                 if (!!tag) {
                     itemTags.push(tag);
                 }
                 if (!!tag && tagsList.indexOf(tag) === -1) {
                     tagsList.push(tag);
                 }
-            })
+            });
             item.tags = itemTags;
             return item;
-        })
+        });
 
         this.setState({
             galleryList: galleryList,
@@ -51,8 +51,8 @@ export default class Main extends Component {
     }
 
     handleCheckedTagChange = arr => {
-        const { galleryList, tagsList } = this.state;
-        
+        const {galleryList, tagsList} = this.state;
+
         if (arr.length === 0) {
             this.setState({
                 checkedList: galleryList
@@ -66,9 +66,9 @@ export default class Main extends Component {
             if (isChecked) {
                 checkedList.push(item);
             }
-        })
+        });
         this.setState({checkedList});
-    }
+    };
 
     render() {
         return (
