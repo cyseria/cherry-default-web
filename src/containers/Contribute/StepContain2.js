@@ -15,7 +15,7 @@ class StepContain2Form extends Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                this.props.onNext();
+                this.props.onNext(values);
             }
         });
     };

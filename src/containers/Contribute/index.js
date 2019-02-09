@@ -44,10 +44,7 @@ export default class Contribute extends Component {
         console.log('submit data', form);
         createProject(form)
             .then(res => {
-                this.next();
-            })
-            .catch(err => {
-                message.error(err);
+                // this.next();
             });
     };
 

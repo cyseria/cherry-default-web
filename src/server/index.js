@@ -4,7 +4,7 @@
  */
 import {API} from './api';
 import {axios} from './request';
-import './mock';
+// import './mock';
 
 export const createProject = values => axios.post(API.project, values);
 export const getProjectList = values => axios.get(API.project, values);

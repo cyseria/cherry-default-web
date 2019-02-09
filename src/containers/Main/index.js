@@ -3,7 +3,7 @@
  * @author Cyseria <xcyseria@gmail.com>
  * @created time: 2018-06-10 08:32:00
  * @last modified by: 陈蔓青
- * @last modified time: 2019-02-08 22:44:12
+ * @last modified time: 2019-02-09 23:57:07
  */
 
 import './style.less';
@@ -22,7 +22,7 @@ export default class Main extends Component {
     };
     componentWillMount() {
         getProjectList().then(res => {
-            const galleryList = res;
+            const galleryList = res.rows;
             const tagsList = getTagsList(galleryList);
             this.setState({
                 galleryList: galleryList,
